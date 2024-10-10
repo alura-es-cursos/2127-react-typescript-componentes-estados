@@ -1,11 +1,15 @@
 import './App.css'
 import ListaTareas from './componentes/ListaTareas'
+import Home from './views/Home'
 
 function App() {
 
   return (
     <>
-      <ListaTareas></ListaTareas>
+      <Home>
+        <ListaTareas></ListaTareas>
+      </Home>
+
     </>
   )
 }
