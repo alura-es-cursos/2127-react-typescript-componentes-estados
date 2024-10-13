@@ -1,4 +1,5 @@
 interface ITarea {
+    id: Number,
     nombre: string,
     descripcion: string,
     estado: string,

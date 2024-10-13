@@ -18,11 +18,20 @@
 #task-form button {
     width: 100%;
     padding: 10px;
-    background: #e8491d;
+    background: #0404e2;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+#task-form li .finalizar {
+    background-color: #008000;
+}
+
+#task-form li .acciones {
+    display: flex;
+    gap: 1rem;
 }
 
 #task-list {

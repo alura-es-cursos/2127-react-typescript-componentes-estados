@@ -4,9 +4,11 @@ import ITarea from "../interfaces/ITarea";
 interface ITareaProps {
     tarea: ITarea,
     index: Number,
+    onFinalizar: (id: Number) => void,
+    onEliminar: (id: Number) => void,
 };
 
-const Tarea: FC<ITareaProps> = ({ tarea, index }) => {
+const Tarea: FC<ITareaProps> = ({ tarea, index, onFinalizar, onEliminar }) => {
     return (
         <li key={index.toString()}>
             <div className="task-header">
@@ -17,6 +19,10 @@ const Tarea: FC<ITareaProps> = ({ tarea, index }) => {
             </div>
             <p><strong>Descripción:</strong> {tarea.descripcion}</p>
             <p><strong>Fecha de vencimiento:</strong> {tarea.fecha.toUTCString()}</p>
+            <div className="acciones">
+                {tarea.estado !== 'Finalizado' && <button className="finalizar" onClick={() => onFinalizar(tarea.id)}>Finalizar</button>}
+                <button className="eliminar" onClick={() => onEliminar(tarea.id)}>Eliminar</button>
+            </div>
         </li>
     )
 };
