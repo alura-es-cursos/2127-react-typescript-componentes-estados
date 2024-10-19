@@ -1,7 +1,8 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, MouseEvent, useState } from "react";
 import './ListaTareas.css';
 import ITarea from "../interfaces/ITarea";
 import Tarea from "./Tarea";
+import Formulario from "./Formulario";
 
 interface IProps { };
 
@@ -49,7 +50,7 @@ const ListaTareas: FC<IProps> = () => {
             (!finalizadas || tarea.estado === 'Finalizado');
     })
 
-    const agregarTarea = () => {
+    const agregarTarea = (tarea: ITarea) => {
         setTareas([...tareas, tarea]);
     }
 
@@ -64,9 +65,13 @@ const ListaTareas: FC<IProps> = () => {
 
     return (
         <>
+            <h2>Creación de Tareas</h2>
+            <Formulario onAgregarTarea={agregarTarea}></Formulario>
+            <hr />
+            <h2>Lista de Tareas</h2>
             <div>
                 <input type="text" value={filtro}
-                    onChange={(e) => setFiltro(e.target.value)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setFiltro(e.target.value)}
                     placeholder="Digite para filtrar"
                 />
                 <label>
@@ -76,13 +81,11 @@ const ListaTareas: FC<IProps> = () => {
                     />
                 </label>
             </div>
-            <div>
-                <button onClick={() => agregarTarea()}>Agregar tarea</button>
-            </div>
             <ul id="tasks">
                 {
-                    tareasFiltradas.map((tarea: ITarea, index: Number) => (
+                    tareasFiltradas.map((tarea: ITarea, index: number) => (
                         <Tarea tarea={tarea}
+                            key={tarea.id}
                             index={index}
                             onFinalizar={onFinalizar}
                             onEliminar={onEliminar}></Tarea>

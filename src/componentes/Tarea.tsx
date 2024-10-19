@@ -3,9 +3,9 @@ import ITarea from "../interfaces/ITarea";
 
 interface ITareaProps {
     tarea: ITarea,
-    index: Number,
-    onFinalizar: (id: Number) => void,
-    onEliminar: (id: Number) => void,
+    index: number,
+    onFinalizar: (id: number) => void,
+    onEliminar: (id: number) => void,
 };
 
 const Tarea: FC<ITareaProps> = ({ tarea, index, onFinalizar, onEliminar }) => {
