@@ -12,13 +12,6 @@ const ListaTareas: FC<IProps> = () => {
     const [filtro, setFiltro] = useState<string>('');
     const [finalizadas, setFinalizadas] = useState<boolean>(false);
     //const [tareas, setTareas] = useState();
-    const [tarea] = useState<ITarea>({
-        id: 0,
-        nombre: 'Nueva tarea',
-        descripcion: 'La descripción',
-        estado: 'Finalizado',
-        fecha: new Date(),
-    });
 
     const [tareas, setTareas] = useState<ITarea[]>([
         {
@@ -66,7 +59,7 @@ const ListaTareas: FC<IProps> = () => {
     return (
         <>
             <h2>Creación de Tareas</h2>
-            <Formulario onAgregarTarea={agregarTarea}></Formulario>
+            <Formulario onSubmit={agregarTarea}></Formulario>
             <hr />
             <h2>Lista de Tareas</h2>
             <div>
